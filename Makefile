@@ -10,7 +10,7 @@ MAIN = main
 MAIN_SRC = $(MAIN).v
 CLOCK_FREQ = 60
 PLL_SRC = pll_$(CLOCK_FREQ)mhz.v
-SRCS = $(MAIN_SRC) $(PLL_SRC)
+SRCS = $(MAIN_SRC) $(PLL_SRC) pwm.v
 
 FPGA_DIE = 5k
 FPGA_PACKAGE = sg48
