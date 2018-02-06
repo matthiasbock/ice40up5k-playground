@@ -1,0 +1,22 @@
+
+# Generated
+pll_*.v
+netlist-*
+*.blif
+*.edif
+*.asc
+*.bin
+*.bit
+
+# Visualization outputs
+*.dot
+*.ps
+*.eps
+*.svg
+*.pdf
+
+# Temporary
+*~
+.*.swp
+.*.~lock
+
