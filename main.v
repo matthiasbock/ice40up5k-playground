@@ -12,7 +12,9 @@ module top(
     // LED outputs
     output led_blue,
     output led_red,
-    output led_green
+    output led_green,
+
+    output pwm1
     );
 
 /*
@@ -21,38 +23,31 @@ module top(
 wire pll_in = clock_12mhz;
 wire pll_out;
 wire locked;
-pll pll_36mhz(
+pll pll_hf_clock(
     pll_in,
     pll_out,
     locked
     );
-wire    reset;
-assign  reset = !locked;
+//wire    reset;
+//assign  reset = !locked;
 wire    hf_clock;
 assign  hf_clock = pll_out & locked;
 
 /*
- * High frequency counter
+ * Low frequency clock: 1.5 kHz
  */
-reg[7:0]  pll_counter;
-initial   pll_counter = 0;
+reg[23:0]   lf_counter;
+initial     lf_counter = 0;
 
-always @(posedge reset, posedge clock_12mhz)
+assign led_blue   = 1;
+assign led_green  = lf_counter[23];
+assign led_red    = 1;
+
+reg[7:0]  duty_red;
+
+always @(posedge clock_12mhz)
 begin
-    if (reset)
-    begin
-        // reset counter
-        pll_counter <= 0;
-    end
-    else begin
-        if (pll_counter > 128)
-        begin
-            led_blue <= 1;
-        end
-        else begin
-            led_blue <= 0;
-        end
-    end
+    lf_counter <= lf_counter + 1;
 end
 
 endmodule

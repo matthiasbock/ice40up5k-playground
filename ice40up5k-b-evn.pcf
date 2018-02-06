@@ -29,3 +29,5 @@ set_io ice_mosi   17
 set_io ice_miso   14
 set_io creset_b   8
 set_io cdone      7
+
+set_io pwm1       4     # marked 8A on PCB

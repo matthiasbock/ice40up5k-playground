@@ -18,7 +18,7 @@ FPGA_OPTION = -d $(FPGA_DIE) -P $(FPGA_PACKAGE)
 PCF = ice40up5k-b-evn.pcf
 
 
-all: $(MAIN).bin
+all: $(MAIN).blif
 
 #
 # Compile Verilog source code
@@ -58,6 +58,8 @@ clean_pdf:
 #
 # Synthesize for iCEstick
 #
+
+asc: $(MAIN).asc
 
 # Place and route
 %.asc: %.blif
