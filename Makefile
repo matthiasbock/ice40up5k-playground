@@ -56,7 +56,7 @@ clean_pdf:
 
 
 #
-# Synthesize for iCEstick
+# Place and route
 #
 
 asc: $(MAIN).asc
